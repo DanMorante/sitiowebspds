@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sporting Don Satur: noticias, historia y fútbol entre amigos.">
+  <link rel="icon" type="image/png" href="imagenes/escudo.png">
+  <title>Sporting Don Satur</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body id="inicio">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+<div class="franja"><div class="contenedor">FÚTBOL ENTRE AMIGOS <span>SPORTING DON SATUR</span></div></div>
+  
+  <header class="cabecera contenedor">
+    <a class="marca" href="index.html" aria-label="Sporting Don Satur, inicio">
+      <img src="imagenes/escudo.png" alt="Escudo de Sporting Don Satur" height="150">
+      <div class="textos-marca">
+        <span class="subtitulo">MAS QUE UN CLUB</span>
+        <h1>SPORTING<br><span class="titulo-secundario">DON SATUR</span></h1>
+      </div>
+    </a>
+    <p class="lema">Actualizado hasta el:<br><strong>27/09/26</strong></p>
+
+    <!-- Botón hamburguesa (Se oculta en PC, se muestra en celulares) -->
+    <button id="btn-menu-movil" class="btn-menu-movil">☰</button>
+  </header>
+
+<nav class="navegacion" aria-label="Menú principal">
+    <div class="contenedor enlaces" id="menu-enlaces">
+      
+      <!-- Botón X para cerrar en celular -->
+      <button id="btn-cerrar-menu" class="btn-cerrar-menu">✕</button>
+
+      <a href="index.html" class="activo"><img src="imagenes/escudosimplificado.png" alt="Inicio" height="50"></a>
+      
+      <!-- SUBMENÚ: PARTIDO -->
+      <div class="item-desplegable">
+        <button class="enlace-principal" type="button">
+          Partido
+          <!-- Icono de flecha -->
+          <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="submenu">
+          <a href="partido.html">Sporting DS</a>
+          <a href="partido_sp.html">SP Don Satur</a>
+        </div>
+      </div>
+
+      <!-- SUBMENÚ: PLANTEL -->
+      <div class="item-desplegable">
+        <button class="enlace-principal" type="button">
+          Plantel
+          <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="submenu">
+          <a href="plantel.html">Sporting DS</a>
+          <a href="plantel_sp.html">SP Don Satur</a>
+        </div>
+      </div>
+
+      <!-- SUBMENÚ: ESTADÍSTICAS -->
+      <div class="item-desplegable">
+        <button class="enlace-principal" type="button">
+          Estadísticas
+          <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="submenu">
+          <a href="estadisticas.html">Sporting DS</a>
+          <a href="estadisticas_sp.html">SP Don Satur</a>
+        </div>
+      </div>
+
+      <!-- ENLACES NORMALES -->
+      <a href="tabla.html">Tabla</a>
+      <a href="historia.html">Historia</a>
+      <a href="noticias.html">Noticias</a>
+    </div>
+  </nav>
+
+  <!-- Carrusel de Portadas -->
+<section class="carrusel-portada">
+  
+  <!-- Botones para pasar manual -->
+  <button class="btn-carrusel prev" id="js-carrusel-prev">&#10094;</button>
+  <button class="btn-carrusel next" id="js-carrusel-next">&#10095;</button>
+
+  <!-- =============================== -->
+  <!-- SLIDE 1: PRÓXIMO PARTIDO (Activo por defecto) -->
+  <!-- =============================== -->
+  <div class="slide activo" id="js-slide-proximo">
+    <div class="contenedor portada-grid">
+
+            <!-- Lado Izquierdo: Título que entra desde la izquierda -->
+            <div class="portada-izq">
+              <!-- Si "PRÓXIMO PARTIDO" es una imagen con esa tipografía especial, usá la etiqueta <img>. Si no, usá un <h2> -->
+              <h2 class="titulo-elegante">PRÓXIMO<br>PARTIDO</h2>
+            </div>
+
+            <!-- Lado Derecho: Datos que entran desde la derecha -->
+            <div class="portada-der">
+      
+              <!-- Fila superior: Escudos -->
+              <div class="portada-escudos">
+                <img src="imagenes/tabla/escudosportingds.png" alt="Sporting Don Satur" class="escudo-local">
+                <span class="separador-blanco">|</span>
+                <img id="js-escudo-rival" src="imagenes/escudorival.png" alt="Rival" class="escudo-rival">
+              </div>
+
+              <!-- Fila inferior: Torneo, Fecha y Estadio -->
+              <div class="portada-info">
+                <img src="imagenes/copadelreylogo.png" alt="Torneo" class="logo-torneo">
+        
+                  <div class="portada-textos">
+                    <div class="fila-texto">
+                      <span id="js-fecha-num" class="texto-grueso">FECHA 6</span>
+                      <span class="texto-fino"><span id="js-dia">26/09</span> - <span id="js-hora">14:50HS.</span></span>
+                    </div>
+                    <div class="fila-texto">
+                    <span class="texto-grueso">ESTADIO</span>
+                    <span class="texto-fino">PREDIO 98</span>
+                    </div>
+                  </div>
+              </div>
+            </div>
+      </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SLIDE 2: ÚLTIMO PARTIDO -->
+  <!-- =============================== -->
+  <div class="slide" id="js-slide-ultimo">
+    <div class="contenedor portada-grid">
+      
+      <!-- Lado Izquierdo: Estado del partido dinámico -->
+      <div class="portada-izq">
+        <h2 class="titulo-elegante" id="js-estado-partido">ÚLTIMO<br>PARTIDO</h2>
+      </div>
+      
+      <!-- Lado Derecho: Escudos y Resultado -->
+      <div class="portada-der">
+        
+        <div class="portada-escudos">
+          <img src="imagenes/tabla/escudosportingds.png" alt="Sporting Don Satur" class="escudo-local">
+          <span class="separador-blanco">|</span>
+          <!-- ID ÚNICO para este escudo -->
+          <img id="js-escudo-rival-ultimo" src="" alt="Rival" class="escudo-rival">
+        </div>
+
+        <div class="portada-info" style="justify-content: center; margin-top: 15px;">
+          <!-- ID ÚNICO para el resultado, con un estilo de marcador grande -->
+          <span id="js-resultado-ultimo" style="font-size: 45px; font-weight: 900; color: white; letter-spacing: 5px; text-shadow: 2px 4px 15px rgba(0,0,0,0.5);"></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SLIDE 3: NOTICIA DESTACADA -->
+  <!-- =============================== -->
+  <div class="slide" id="js-slide-noticia">
+    <div class="contenedor portada-grid">
+      
+      <!-- Lado Izquierdo: Título y Subtítulo -->
+      <div class="portada-izq" style="display: flex; flex-direction: column; gap: 10px;">
+        <!-- Usamos innerHTML en JS, así que podés poner <br> en el panel de control -->
+        <h2 class="titulo-elegante" id="js-noticia-titulo">NOTICIA</h2>
+        <p id="js-noticia-subtitulo" style="color: white; font-size: 16px; max-width: 450px; text-shadow: 1px 2px 8px rgba(0,0,0,0.7); line-height: 1.4;"></p>
+      </div>
+      
+      <!-- Lado Derecho: Imagen y Link -->
+      <div class="portada-der">
+        <a href="#" id="js-noticia-link" class="enlace-noticia-slide" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; gap: 15px; transition: transform 0.3s ease;">
+          <img id="js-noticia-imagen" src="" alt="Imagen de la noticia" style="max-height: 220px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); object-fit: cover;">
+          <span style="background: var(--acento); color: var(--azul); padding: 8px 22px; font-weight: 900; border-radius: 6px; font-size: 13px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">Leer más ➔</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+  <div class="fondo-contenido">
+  <main id="contenido" class="contenedor">
+    <div class="columnas">
+      <section id="noticias" aria-labelledby="titulo-noticias">
+        <div class="encabezado-seccion"><h2 id="titulo-noticias">Últimas noticias</h2><span>EL DÍA A DÍA</span></div>
+        <!-- Noticias de ejemplo: reemplazá los textos, fechas e imágenes. -->
+        <div class="noticias">
+          <article class="tarjeta"><img src="imagenes/noticias/fecha6decisionpuntos.png" alt="Cancha ilustrada de ejemplo"><div class="tarjeta-texto"><span class="categoria">TORNEO · FECHA 6</span><h3>Sporting gana los 3 puntos de la Fecha 6</h3><p>Tras darse a conocer que un jugador expulsado de LPF jugó el partido por la Fecha 6, Copa Del Rey le ha quitado los puntos a LPF y se los ha dado a Sporting.</p><small>21/09</small></div></article>
+          <article class="tarjeta"><img class="segunda-imagen" src="imagenes/noticias/fecha6francesco.png" alt="Cancha ilustrada de ejemplo"><div class="tarjeta-texto"><span class="categoria">TORNEO · FECHA 6</span><h3>Sporting cae 3 - 0 ante LPF en un arbitraje polémico</h3><p>Tras un bochornoso y malintencionado arbitraje de "El Topo", Sporting se queda sin puntos en la sexta fecha.</p><small>19/09</small></div></article>
+        </div>
+      </section>
+      <aside class="partido" aria-labelledby="titulo-partido"><span class="categoria">AGENDA</span><h2 id="titulo-partido">Próximo partido</h2>
+        <div class="versus">
+          <!-- Cuadro blanco para Sporting Don Satur -->
+          <div class="caja-equipo">
+          <img src="imagenes/tabla/escudosportingds.png" alt="Sporting Don Satur">
+          </div>
+      
+          <strong>VS</strong>
+      
+          <!-- Cuadro blanco para el Rival -->
+          <div class="caja-equipo rival">
+          <img src="imagenes/tabla/escudoguarani.png" alt="Sporting Don Satur">
+          </div>
+        </div>
+      <h3>Sporting</h3><p>Guarani</p>
+      <div class="datos-partido">Sabado 03/10<br>Cancha 6</div>
+
+        <div id="cuenta-regresiva" class="contador-partido">
+        <div class="bloque-tiempo">
+          <span id="dias">00</span>
+          <small>Días</small>
+        </div>
+        <div class="bloque-tiempo">
+          <span id="horas">00</span>
+          <small>Horas</small>
+        </div>
+        <div class="bloque-tiempo">
+          <span id="minutos">00</span>
+          <small>Min</small>
+        </div>
+        <div class="bloque-tiempo">
+          <span id="segundos">00</span>
+          <small>Seg</small>
+        </div>
+        </div>
+    
+    </aside>
+    </div>
+<section class="galeria-equipo">
+  <div class="grilla-fotos">
+    <!-- Reemplazá el src con la ruta de tus fotos -->
+    <img src="imagenes/fondoequipomenu.png" alt="Acción del partido de Sporting Don Satur">
+    <img src="imagenes/noticias/fecha6francesco.png" alt="Francesco Morbiducci">
+    <img src="imagenes/noticias/fecha6alpaca.png" alt="Morante">
+  </div>
+  
+  <div class="credito-fotografo">
+    <p>📸 Fotografías hechas por <strong>Fernanda Paz</strong> | <a href="https://instagram.com/fpazph" target="_blank">@fpazph</a></p>
+  </div>
+</section>
+  </main>
+
+<footer class="mi-footer">
+  <div class="footer-contenido">
+    
+    <!-- Columna 1: Izquierda -->
+    <div class="footer-columna izquierda">
+      <a href="index.html" class="link-inicio">
+        <!-- Reemplaza "escudo.png" por el nombre y ruta real de tu imagen -->
+        <img src="imagenes/escudosimplificado.png" alt="Escudo Sporting Don Satur" class="escudo-footer">
+        <h3>SPORTING DON SATUR</h3>
+      </a>
+    </div>
+
+    <!-- Columna 2: Centro -->
+    <div class="footer-columna centro">
+      <a href="https://www.instagram.com/sportingdonsatur" target="_blank" class="instagram-link">
+        <!-- Reemplaza el SVG de abajo con el código de tu propio ícono -->
+        <svg class="icono-ig" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @sportingdonsatur
+      </a>
+    </div>
+
+    <!-- Columna 3: Derecha -->
+    <div class="footer-columna derecha">
+      <img src="imagenes/logodonsatur2.png" alt="Logo Don Satur" class="logo-imagen">
+      <!-- Agregamos el enlace y una clase nueva -->
+      <a href="https://www.donsatur.com.ar" target="_blank" class="logo-texto-link">
+        Don Satur SRL
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Copyright abajo del todo -->
+  <div class="footer-copyright">
+    <p>© 2026 Sporting Don Satur. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+  </div>
+  <div class="barra-fija" id="barra-fija" inert>
+  <a href="#inicio" aria-label="Volver al inicio">
+    <!-- El escudo se copia automáticamente -->
+  </a>
+</div>
+
+<script src="efectos.js"></script>
+<script src="contador.js"></script>
+<script src="portada.js"></script>
+</body>
+</html>

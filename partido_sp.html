@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sporting Don Satur: noticias, historia y fútbol entre amigos.">
+  <link rel="icon" type="image/png" href="imagenes/escudo.png">
+  <title>Sporting Don Satur | Partido</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body id="inicio">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+<div class="franja"><div class="contenedor">FÚTBOL ENTRE AMIGOS <span>SPORTING DON SATUR</span></div></div>
+  
+  <header class="cabecera contenedor">
+    <a class="marca" href="index.html" aria-label="Sporting Don Satur, inicio">
+      <img src="imagenes/escudo.png" alt="Escudo de Sporting Don Satur" height="150">
+      <div class="textos-marca">
+        <span class="subtitulo">MAS QUE UN CLUB</span>
+        <h1>SPORTING<br><span class="titulo-secundario">DON SATUR</span></h1>
+      </div>
+    </a>
+    <p class="lema">Los colores nos unen.<br><strong>La amistad nos define.</strong></p>
+
+    <!-- Botón hamburguesa (Se oculta en PC, se muestra en celulares) -->
+    <button id="btn-menu-movil" class="btn-menu-movil">☰</button>
+  </header>
+
+<nav class="navegacion" aria-label="Menú principal">
+    <div class="contenedor enlaces" id="menu-enlaces">
+      
+      <!-- Botón X para cerrar en celular -->
+      <button id="btn-cerrar-menu" class="btn-cerrar-menu">✕</button>
+
+      <a href="index.html"><img src="imagenes/escudosimplificado.png" alt="Inicio" height="50"></a>
+      
+      <!-- SUBMENÚ: PARTIDO -->
+      <div class="item-desplegable">
+        <button class="enlace-principal" type="button">
+          Partido
+          <!-- Icono de flecha -->
+          <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="submenu">
+          <a href="partido.html">Sporting DS</a>
+          <a href="partido_sp.html">SP Don Satur</a>
+        </div>
+      </div>
+
+      <!-- SUBMENÚ: PLANTEL -->
+      <div class="item-desplegable">
+        <button class="enlace-principal" type="button">
+          Plantel
+          <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="submenu">
+          <a href="plantel.html">Sporting DS</a>
+          <a href="plantel_sp.html">SP Don Satur</a>
+        </div>
+      </div>
+
+      <!-- SUBMENÚ: ESTADÍSTICAS -->
+      <div class="item-desplegable">
+        <button class="enlace-principal" type="button">
+          Estadísticas
+          <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="submenu">
+          <a href="estadisticas.html">Sporting DS</a>
+          <a href="estadisticas_sp.html">SP Don Satur</a>
+        </div>
+      </div>
+
+      <!-- ENLACES NORMALES -->
+      <a href="tabla.html">Tabla</a>
+      <a href="historia.html">Historia</a>
+      <a href="noticias.html">Noticias</a>
+    </div>
+  </nav>
+
+  <div class="fondo-contenido">
+    <main id="contenido" class="contenedor pagina-partido layout-partido">
+    
+    <!-- COLUMNA IZQUIERDA: LISTA COMPACTA -->
+    <aside class="columna-alineacion">
+      <div class="tarjeta-alineacion-lateral">
+        
+        <!-- Nuevo Título Unificado -->
+        <h3 class="titulo-lateral">Convocados</h3>
+        <ul class="lista-vertical-jugadores">
+          <!-- Agrupa aquí a todos los jugadores, sin separación -->
+          <li><span class="dorsal-pequeno">1</span> <span class="nombre">J. <strong>Guerreiro</strong></span></li>
+          <li><span class="dorsal-pequeno">17</span> <span class="nombre">D. <strong>Gonzalez</strong></span></li>
+          <li><span class="dorsal-pequeno">25</span> <span class="nombre">M. <strong>Ibanez</strong></span></li>
+          <li><span class="dorsal-pequeno">13</span> <span class="nombre">Francesco. <strong>M</strong></span></li>
+          <li><span class="dorsal-pequeno">18</span> <span class="nombre">J. <strong>Dome</strong></span></li>
+          <li><span class="dorsal-pequeno">5</span> <span class="nombre">Enzo. <strong>M</strong></span><img src="imagenes/cintacapitan.png" alt="Capitán" class="icono-capitan"></li>
+          <li><span class="dorsal-pequeno">80</span> <span class="nombre">U. <strong>Buroni</strong></span></li>
+          <li><span class="dorsal-pequeno">22</span> <span class="nombre">D. <strong>Morante</strong></span></li>
+          <li><span class="dorsal-pequeno">30</span> <span class="nombre">J. <strong>Millar</strong></span></li>
+          <li><span class="dorsal-pequeno">8</span> <span class="nombre">S. <strong>Basualdo</strong></span></li>
+          <li><span class="dorsal-pequeno">69</span> <span class="nombre">F. <strong>Vivar</strong></span></li>
+          <li><span class="dorsal-pequeno">10</span> <span class="nombre">L. <strong>Cisint</strong></span></li>
+          <li><span class="dorsal-pequeno">6</span> <span class="nombre">A. <strong>Fuentealba</strong></span></li>
+          <li><span class="dorsal-pequeno">16</span> <span class="nombre">T. <strong>Perez</strong></span></li>
+        </ul>
+
+        <hr class="separador-lateral">
+
+        <!--CONTADOR-->
+        <h3 class="titulo-lateral" style="font-size: 13px;">El partido arranca en:</h3>
+        <div id="cuenta-regresiva" class="contador-partido">
+          <div class="bloque-tiempo"><span id="dias">00</span><small>Días</small></div>
+          <div class="bloque-tiempo"><span id="horas">00</span><small>Horas</small></div>
+          <div class="bloque-tiempo"><span id="minutos">00</span><small>Min</small></div>
+          <div class="bloque-tiempo"><span id="segundos">00</span><small>Seg</small></div>
+        </div>
+
+      </div> <!-- ACÁ RECIÉN CIERRA LA ÚNICA TARJETA BLANCA -->
+    </aside>
+
+
+    <!-- COLUMNA DERECHA: GRÁFICO Y ESCUDOS -->
+    <section class="tarjeta-formacion-derecha">
+      
+      <div class="duelo-encabezado">
+        <div class="equipo-duelo">
+          <!-- Reemplaza con la ruta de tu escudo -->
+          <img src="imagenes/tabla/spds.png" alt="Sporting">
+          <span>SPORTING DS</span>
+        </div>
+        
+        <div class="vs-duelo">VS</div>
+        
+        <div class="equipo-duelo">
+          <!-- Reemplaza con el escudo del rival -->
+          <img src="imagenes/tabla/escudomandingo.png" alt="Rival">
+          <span>MANDINGO</span>
+        </div>
+      </div>
+
+      <div class="grafico-cancha">
+        <!-- Reemplaza con tu imagen de la formación -->
+        <img src="imagenes/plantillas terminadas/noconfirmada.png" alt="Esquema táctico">
+      </div>
+      
+    </section>
+
+  </main>
+
+<footer class="mi-footer">
+  <div class="footer-contenido">
+    
+    <!-- Columna 1: Izquierda -->
+    <div class="footer-columna izquierda">
+      <a href="index.html" class="link-inicio">
+        <!-- Reemplaza "escudo.png" por el nombre y ruta real de tu imagen -->
+        <img src="imagenes/escudosimplificado.png" alt="Escudo Sporting Don Satur" class="escudo-footer">
+        <h3>SPORTING DON SATUR</h3>
+      </a>
+    </div>
+
+    <!-- Columna 2: Centro -->
+    <div class="footer-columna centro">
+      <a href="https://www.instagram.com/sportingdonsatur" target="_blank" class="instagram-link">
+        <!-- Reemplaza el SVG de abajo con el código de tu propio ícono -->
+        <svg class="icono-ig" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @sportingdonsatur
+      </a>
+    </div>
+
+    <!-- Columna 3: Derecha -->
+    <div class="footer-columna derecha">
+      <img src="imagenes/logodonsatur2.png" alt="Logo Don Satur" class="logo-imagen">
+      <!-- Agregamos el enlace y una clase nueva -->
+      <a href="https://www.donsatur.com.ar" target="_blank" class="logo-texto-link">
+        Don Satur SRL
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Copyright abajo del todo -->
+  <div class="footer-copyright">
+    <p>© 2026 Sporting Don Satur. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+  </div>
+  <div class="barra-fija" id="barra-fija" inert>
+  <a href="#inicio" aria-label="Volver al inicio">
+    <!-- El escudo se copia automáticamente -->
+  </a>
+</div>
+
+<script src="efectos.js"></script>
+<script src="contador.js"></script>
+</body>
+</html>

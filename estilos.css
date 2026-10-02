@@ -1,0 +1,1321 @@
+/* 1. LOS COLORES QUE SE VAN A MOSTRAR EN TODA LA PAGINA*/
+:root {
+  --azul: #11335B;
+  --azul-claro: #164576;
+  --acento: #CEA755;
+  --fondo: #f3f4f6;
+  --rojo: #B1262F;
+  --gris-marca: #484441;
+  --texto: var(--gris-marca);
+  --gris: #536171;
+}
+
+/* 2. BASE */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--fondo); color: var(--texto); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; line-height: 1.6; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+h1, h2, h3, p { margin: 0; line-height: 1.15; }
+.contenedor { width: min(1112px, 92%); margin-inline: auto; }
+section { scroll-margin-top: 24px; }
+a:focus-visible { outline: 3px solid var(--acento); outline-offset: 5px; }
+.saltar { position: absolute; left: 12px; top: -100px; background: white; padding: 10px; z-index: 10; }
+.saltar:focus { top: 12px; }
+
+/* 3. ENCABEZADO Y MENÚ */
+.franja { background: var(--azul); color: white; font-size: 10px; letter-spacing: 2px; padding: 9px 0; }
+.franja .contenedor { display: flex; justify-content: space-between; gap: 12px; }
+.cabecera { display: flex; justify-content: space-between; align-items: center; min-height: 165px; gap: 20px; background-color: #f3f4f6; background-image: url("imagenes/fondobizcochos.png"); background-position: center; background-size: cover; background-repeat: no-repeat; }
+.marca { display: flex; gap: 23px; align-items: center; text-decoration: none; color: var(--azul); }
+.marca img, .versus img { object-fit: contain; }
+.subtitulo { font-size: 10px; font-weight: bold; letter-spacing: 2px; }
+/* Estilo del título principal (SPORTING) */
+h1 { 
+  font-size: clamp(32px, 4vw, 45px); /* Aumentamos el tamaño base */
+  font-weight: 900; 
+  letter-spacing: -1.5px; /* Lo apretamos un poco más */
+  font-style: italic; /* Le da la inclinación deportiva */
+  color: var(--azul); 
+  line-height: 0.9; /* Acerca los renglones */
+}
+/* Estilo del subtítulo (DON SATUR) */
+.titulo-secundario {
+  font-size: clamp(28px, 3vw, 35px); /* Es notablemente más chico */
+  color: var(--acento); /* Un gris-celeste intermedio que resalta menos que el azul */
+  font-weight: 800; /* Un poco menos grueso que el nombre principal */
+  letter-spacing: 0; /* Letras normales, no apretadas */
+}
+/* Ajuste específico para cuando se ve en celulares (Menú móvil) */
+@media (max-width: 850px) {
+  .marca h1 {
+    font-size: 18px; 
+    letter-spacing: 0.5px;
+    line-height: normal;
+    color: white; /* Rescata a "SPORTING" del fondo azul */
+    text-align: center;
+  }
+  
+  .titulo-secundario {
+    font-size: 16px; 
+    color: white; /* Vuelve al blanco original para "DON SATUR" */
+    margin-left: 5px; 
+  }
+}
+
+.lema { border-left: 2px solid var(--acento); padding-left: 20px; font-size: 14px; color: var(--gris); }
+.navegacion { background: var(--azul); border-bottom: 8px solid var(--acento); }
+/* =================================================== */
+/* MENÚ DE NAVEGACIÓN (PC)                             */
+/* =================================================== */
+.enlaces { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 5px; 
+}
+
+/* 1. Botones simples (Inicio, Tabla, Historia) */
+.enlaces > a { 
+  position: relative; 
+  overflow: hidden; 
+  isolation: isolate; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 8px 20px; 
+  text-decoration: none; 
+  text-transform: uppercase; 
+  color: white; 
+  font-size: 12px; 
+  font-weight: bold; 
+  letter-spacing: 1.5px; 
+  transition: color 0.4s ease; 
+}
+.enlaces > a::before { 
+  content: ""; position: absolute; inset: 0; background: var(--acento); 
+  transform: translateY(100%); transition: transform 0.4s ease; z-index: -1; 
+}
+.enlaces > a:hover, .enlaces > a.activo { background: transparent; color: var(--azul); }
+.enlaces > a:hover::before, .enlaces > a.activo::before { transform: translateY(0); }
+
+/* 2. Contenedor de Submenús */
+.item-desplegable {
+  position: relative; /* Clave para que en PC el submenú se ancle aquí */
+  display: flex;
+  flex-direction: column;
+  min-width: 140px; /* Todos los botones medirán lo mismo */
+}
+
+/* 3. El Botón que despliega (Partido, Plantel) */
+.enlace-principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 20px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color 0.4s ease;
+}
+.enlace-principal svg { transition: transform 0.3s ease; }
+
+/* Animación dorada para PC */
+.enlace-principal::before {
+  content: ""; position: absolute; inset: 0; background: var(--acento); 
+  transform: translateY(100%); transition: transform 0.4s ease; z-index: -1; 
+}
+
+/* 4. Submenú Flotante (Solo PC) */
+.submenu {
+  display: none; 
+  flex-direction: column;
+  background-color: var(--azul-claro);
+  z-index: 200;
+}
+.submenu a {
+  padding: 15px 20px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s, color 0.3s;
+}
+.submenu a:hover {
+  background-color: var(--acento);
+  color: var(--azul);
+}
+
+/* Activación en PC (Hover) */
+@media (min-width: 851px) {
+  .submenu { position: absolute; top: 100%; left: 0; width: 100%; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+  .item-desplegable:hover .submenu { display: flex; }
+  .item-desplegable:hover .enlace-principal { color: var(--azul); }
+  .item-desplegable:hover .enlace-principal::before { transform: translateY(0); }
+  .item-desplegable:hover .enlace-principal svg { transform: rotate(180deg); }
+}
+
+/* =================================================== */
+/* MENÚ DE NAVEGACIÓN (MÓVIL)                          */
+/* =================================================== */
+@media (max-width: 850px) {
+  .item-desplegable { width: 100%; align-items: flex-start; }
+  
+  .enlace-principal {
+    justify-content: space-between; /* Separa texto y flecha */
+    padding: 16px 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+  }
+  .enlace-principal::before { display: none; } /* Apaga el dorado de PC */
+
+  /* El acordeón hacia abajo */
+  .submenu {
+    position: static; /* CRÍTICO: Esto hace que empuje el contenido hacia abajo */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2); 
+    box-shadow: none;
+  }
+  .submenu a {
+    padding: 15px 25px 15px 45px; /* Crea sangría a la izquierda */
+    text-align: left;
+    font-size: 11px;
+    color: #cbd3dd;
+  }
+
+  /* ESTADOS ACTIVADOS POR JAVASCRIPT EN EL CELULAR */
+  .item-desplegable.activo-movil .submenu { display: flex; }
+  .item-desplegable.activo-movil .enlace-principal { color: var(--acento); }
+  .item-desplegable.activo-movil .enlace-principal svg { transform: rotate(180deg); }
+}
+
+/* Contenedor del ítem desplegable */
+.item-desplegable {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* El texto visible en la barra principal (Partido, Plantel, etc) */
+.enlace-principal {
+  padding: 8px 20px;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  transition: color 0.4s ease;
+}
+
+.item-desplegable:hover .enlace-principal {
+  color: var(--acento);
+}
+
+/* El cuadro que contiene los dos equipos */
+.submenu {
+  display: none; /* Oculto por defecto */
+  position: absolute;
+  top: 100%; /* Se ubica justo debajo de la barra */
+  left: 0;
+  background-color: var(--azul-claro);
+  min-width: 170px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 200;
+  flex-direction: column;
+}
+
+/* Muestra el submenú al pasar el mouse por el contenedor SOLO EN PC */
+@media (min-width: 851px) {
+  .item-desplegable:hover .submenu {
+    display: flex;
+  }
+}
+
+/* Diseño de los botones de cada equipo dentro del submenú */
+.submenu a {
+  padding: 15px 20px;
+  text-align: left;
+  justify-content: flex-start;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Anulamos la franja dorada inferior para que no quede raro en el menú vertical */
+.submenu a::before {
+  display: none; 
+}
+
+.submenu a:hover {
+  background-color: var(--acento);
+  color: var(--azul);
+}
+
+/* ADAPTACIÓN MÓVIL (Menú lateral oscuro) */
+@media (max-width: 850px) {
+  .item-desplegable {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .enlace-principal {
+    width: 100%;
+    padding: 16px 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .submenu {
+    position: static; /* Para que empuje los demás elementos hacia abajo */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo más oscuro para diferenciar */
+    box-shadow: none;
+  }
+  .submenu a {
+    padding-left: 45px; /* Sangría para notar que son sub-items */
+    font-size: 11px;
+    color: #cbd3dd;
+  }
+}
+
+/* 4. NOTICIA PRINCIPAL */
+.portada { position: relative; min-height: 440px; margin-top: 30px; background: var(--azul); display: flex; align-items: end; overflow: hidden; border-radius: 12px 12px 0 0; }
+.portada > img { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,51,91,.95), rgba(17,51,91,.25)); }
+.portada-texto { position: relative; z-index: 1; color: white; padding: 45px; max-width: 650px; }
+.etiqueta { display: inline-block; padding: 4px 12px; background: var(--acento); color: var(--azul); font-weight: bold; font-size: 11px; letter-spacing: 1.5px; margin-bottom: 18px; }
+.portada h2 { font-size: clamp(34px, 5vw, 58px); letter-spacing: -1.5px; line-height: 1; }
+.portada p { margin: 17px 0 24px; max-width: 430px; color: #e0e7ed; }
+.boton { display: inline-flex; gap: 25px; align-items: center; padding: 11px 18px; background: white; color: var(--azul); text-decoration: none; font-weight: bold; font-size: 13px; }
+.boton:hover { background: var(--acento); }
+.cinta { background: var(--azul); color: white; padding: 13px 22px; font-size: 11px; font-weight: bold; letter-spacing: 1px; display: flex; justify-content: space-between; gap: 15px; border-radius: 0 0 12px 12px; }
+.cinta span { font-weight: normal; letter-spacing: 0; }
+
+/* 5. NOTICIAS Y PRÓXIMO PARTIDO */
+.fondo-contenido { background-color: #f8f9fa; background-image: url("imagenes/fondoblanco.png"); background-repeat: repeat; background-size: 700px auto; display: flow-root; }
+.columnas { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin: 42px 0; align-items: start; }
+.encabezado-seccion { display: flex; align-items: center; justify-content: space-between; gap: 15px; border-bottom: 2px solid var(--azul); padding-bottom: 15px; margin-bottom: 22px; }
+.encabezado-seccion h2 { font-size: 25px; color: var(--azul); }
+.encabezado-seccion > span { font-size: 10px; letter-spacing: 1px; color: var(--gris); }
+.noticias { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+.tarjeta { background: #fafafa; border-bottom: 3px solid var(--azul); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); border-radius: 8px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.tarjeta:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
+.tarjeta > img { width: 100%; height: 175px; object-fit: cover; }
+.segunda-imagen { filter: grayscale(.8); }
+.tarjeta-texto { padding: 23px; }
+.categoria { color: var(--azul-claro); font-size: 10px; letter-spacing: 1.5px; font-weight: bold; }
+.tarjeta h3 { margin: 12px 0; font-size: 23px; }
+.tarjeta p, .secciones p { color: var(--gris); font-size: 14px; }
+.tarjeta small { display: block; margin-top: 20px; color: var(--gris); font-size: 11px; }
+
+.partido { background: var(--azul); color: white; border-top: 5px solid var(--acento); padding: 28px 22px; text-align: center; border-radius: 12px; box-shadow: 0 8px 24px rgba(17, 51, 91, 0.2); }
+.partido h2, .partido h3 { color: white; }
+.partido p, .versus strong { color: #d1dbe7; }
+.partido > .categoria { color: var(--acento); letter-spacing: 2px; font-weight: 900; margin-bottom: 15px; }
+.partido h2 { font-size: 23px; margin-top: 10px; }
+.partido h3 { font-size: 16px; }
+.partido p { font-size: 14px; margin-top: 6px; }
+.partido a { font-size: 12px; font-weight: bold; color: var(--acento); text-transform: uppercase; letter-spacing: 0.5px; }
+.versus { display: flex; align-items: center; justify-content: center; gap: 22px; margin: 26px 0; }
+.versus strong { font-size: 12px; }
+.datos-partido { margin: 20px 0; padding: 16px 0; border-block: 1px solid rgba(255, 255, 255, 0.2); font-size: 13px; }
+
+.caja-equipo { display: grid; place-items: center; width: 75px !important; height: 75px !important; background: #ffffff; border: 2px solid var(--acento); border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); box-sizing: border-box; }
+.caja-equipo img { width: 85%; height: 85%; object-fit: contain; }
+.caja-equipo.rival { color: var(--azul); font-size: 32px; font-weight: bold; background: #f3f4f6; border: 2px dashed #cbd3dd; }
+.rival { display: grid; place-items: center; width: 60px; height: 68px; border: 2px solid #cbd3dd; color: var(--gris); font-size: 30px; }
+
+/* 6. GALERÍA DE FOTOS */
+.galeria-equipo { width: 100%; padding: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+.grilla-fotos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.grilla-fotos img { width: 100%; height: 280px; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+.grilla-fotos img:hover { transform: scale(1.02); }
+.credito-fotografo { text-align: right; font-size: 0.9rem; color: #666; }
+.credito-fotografo a { color: #0b2241; text-decoration: none; font-weight: 600; }
+.credito-fotografo a:hover { text-decoration: underline; }
+
+/* 7. ADAPTACIÓN BÁSICA */
+@media (max-width: 850px) {
+  .columnas { grid-template-columns: 1fr; }
+  .enlaces a { padding: 14px 12px; }
+  .lema { display: none; }
+}
+@media (max-width: 520px) {
+  .franja span { display: none; }
+  .cabecera { min-height: 140px; }
+  .marca { gap: 15px; }
+  .marca img { width: 65px; height: auto; }
+  .subtitulo { font-size: 8px; }
+  .enlaces a { font-size: 10px; padding: 13px 10px; }
+  .portada { min-height: 390px; margin-top: 20px; }
+  .portada-texto { padding: 26px; }
+  .portada p { font-size: 14px; }
+  .cinta span, .encabezado-seccion > span { display: none; }
+  .noticias, .secciones { grid-template-columns: 1fr; }
+  .historia { padding: 25px; }
+}
+@media (prefers-reduced-motion: reduce) { 
+  html { scroll-behavior: auto; } 
+  .enlaces a, .enlaces a::before, .barra-fija { transition: none; }
+}
+
+/* 8. FOOTER */
+.mi-footer { background-color: var(--azul); color: #ffffff; padding: 40px 20px 20px 20px; font-family: inherit; }
+.footer-contenido { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 30px; }
+.footer-columna { flex: 1; min-width: 250px; }
+.izquierda { text-align: left; }
+.centro { display: flex; justify-content: center; }
+.derecha { display: flex; justify-content: flex-end; align-items: center; gap: 15px; }
+.link-inicio { display: flex; align-items: center; gap: 15px; color: #ffffff; text-decoration: none; }
+.escudo-footer { height: 40px; width: auto; object-fit: contain; transition: opacity 0.3s; }
+.link-inicio h3 { font-size: 1.5rem; margin: 0; transition: opacity 0.3s; }
+.link-inicio:hover .escudo-footer, .link-inicio:hover h3 { opacity: 0.8; }
+.instagram-link { display: flex; align-items: center; gap: 8px; color: #ffffff; text-decoration: none; }
+.instagram-link:hover { text-decoration: underline; }
+.icono-ig { width: 24px; height: 24px; flex-shrink: 0; color: #ffffff; transition: opacity 0.3s ease; }
+.instagram-link:hover .icono-ig { opacity: 0.7; }
+.logo-imagen { height: 32px; width: auto; object-fit: contain; }
+.logo-texto-link { color: #ffffff; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+.logo-texto-link:hover { text-decoration: underline; }
+.footer-copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2); text-align: center; font-size: 0.85rem; }
+
+@media (max-width: 768px) {
+  .footer-contenido { flex-direction: column; gap: 25px; }
+  .footer-columna.izquierda, .footer-columna.derecha { text-align: center; display: flex; justify-content: center; }
+  .link-inicio h3 { font-size: 1.3rem; }
+  .logo-texto-link { font-size: 1.1rem; }
+}
+
+/* 9. BARRA FIJA */
+.barra-fija { position: fixed; top: 0; left: 0; width: 100%; height: 70px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; background: var(--azul); border-bottom: 3px solid var(--acento); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 1000; transform: translateY(-180%); visibility: hidden; transition: transform 0.35s ease, visibility 0.35s; overflow: visible; }
+.barra-fija.visible { transform: translateY(0); visibility: visible; }
+.barra-fija a { display: flex; align-items: center; justify-content: center; position: absolute; left: 50%; bottom: -1px; transform: translate(-50%, 50%); z-index: 1; }
+.barra-fija img { height: 90px; width: auto; display: block; background: radial-gradient(circle at 50% 55%, #ffffff 45%, transparent 47%); }
+
+/* 10. PÁGINA: TABLA DE POSICIONES & FIXTURE */
+.pagina-tabla { padding-top: 40px; padding-bottom: 60px; }
+.columna-posiciones { min-width: 0; width: 100%; }
+.layout-columnas { display: grid; grid-template-columns: 2fr 350px; gap: 30px; align-items: start; }
+.titulo-seccion { font-size: 32px; color: var(--azul); margin-bottom: 20px; }
+.tarjeta-datos { background: white; border-radius: 16px; border: 2px solid var(--azul); border-top: 6px solid var(--acento); box-shadow: 0 12px 35px rgba(17, 51, 91, 0.18); overflow: hidden; }
+.encabezado-zona { padding: 15px 20px; font-size: 13px; color: var(--gris); border-bottom: 1px solid #eaeaea; }
+.tabla-responsiva { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; display: block; }
+.tabla-posiciones { width: 100%; border-collapse: collapse; min-width: 700px; }
+.tabla-posiciones th { text-align: center; font-size: 14px; color: #000000; font-weight: normal; padding: 12px 10px; border-bottom: 1px solid #eaeaea; }
+.tabla-posiciones td { text-align: center; font-size: 13px; padding: 12px 10px; color: var(--texto); border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+th.col-equipo, td.col-equipo { text-align: left !important; }
+td.col-equipo { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+.col-num { width: 30px; font-size: 12px; color: var(--gris); }
+.col-pts { font-weight: bold; font-size: 14px; }
+.escudo-miniatura { width: 24px; height: 24px; object-fit: contain; }
+.col-racha { display: flex; justify-content: center; gap: 4px; align-items: center; height: 100%; }
+.col-racha span { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; font-size: 10px; font-weight: bold; }
+.racha-g { border: 1px solid #4CAF50; color: #4CAF50; } 
+.racha-e { border: 1px solid #FFC107; color: #FFC107; } 
+.racha-p { border: 1px solid #F44336; color: #F44336; } 
+
+.tarjeta-fixture { background: white; border-radius: 12px; border: 2px solid var(--azul); box-shadow: 0 12px 35px rgba(17, 51, 91, 0.18); overflow: hidden; }
+.fixture-header { background: var(--azul); color: white; display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 4px solid var(--acento); }
+.fixture-header h3 { margin: 0; font-size: 16px; letter-spacing: 1px; }
+.btn-fecha { background: none; border: none; color: white; font-size: 18px; cursor: pointer; padding: 0 10px; transition: color 0.3s; }
+.btn-fecha:hover { color: var(--acento); }
+.dia-partido { background: #f3f4f6; text-align: center; font-size: 11px; font-weight: bold; color: var(--gris); padding: 6px 0; border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea; }
+.fila-partido { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 12px 10px; border-bottom: 1px solid #f0f0f0; font-size: 13px; gap: 8px; }
+.fila-partido:last-child { border-bottom: none; }
+.resultado { text-align: center; font-weight: bold; font-size: 14px; background: var(--azul); color: white; padding: 4px 10px; border-radius: 4px; white-space: nowrap; min-width: 40px; }
+.resultado.vs { background: #e0e7ed; color: var(--gris); font-size: 12px; }
+.estado { font-size: 10px; font-weight: bold; color: var(--texto); }
+.equipo { display: flex; align-items: center; gap: 8px; }
+.equipo.local { justify-content: flex-end; text-align: right; }
+.equipo.visitante { justify-content: flex-start; text-align: left; }
+.equipo img { width: 22px; height: 22px; object-fit: contain; }
+.equipo .nombre { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90px; }
+
+.columna-fixture { position: sticky; top: 100px; }
+.tarjeta-sponsor { display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; border: 2px dashed #cbd3dd; border-radius: 12px; padding: 25px 20px; margin-top: 25px; text-decoration: none; transition: all 0.3s ease; }
+.tarjeta-sponsor:hover { border-color: var(--acento); background: #fbf9f4; }
+.etiqueta-sponsor { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gris); margin-bottom: 15px; }
+.placeholder-logo { width: 100%; height: 80px; background: rgba(17, 51, 91, 0.05); color: var(--azul); font-weight: 900; font-size: 18px; display: grid; place-items: center; border-radius: 8px; margin-bottom: 15px; }
+.tarjeta-sponsor p { font-size: 14px; color: var(--azul); font-weight: bold; }
+
+@media (max-width: 1024px) {
+  .layout-columnas { grid-template-columns: 1fr; gap: 50px; }
+  .columna-fixture { order: 1; position: static; }
+  .columna-posiciones { order: 2; }
+}
+
+/* 11. PÁGINA: PLANTEL */
+.pagina-plantel { padding-top: 40px; padding-bottom: 60px; }
+.layout-sidebar { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+.menu-lateral { position: sticky; top: 100px; }
+.encabezado-lateral { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+.encabezado-lateral span { font-size: 13px; font-weight: 900; color: var(--azul); letter-spacing: 1px; }
+.linea-corta { width: 30px; height: 5px; background: var(--azul); }
+.linea-larga { flex: 1; height: 5px; background: var(--azul); }
+.lista-lateral { list-style: none; padding: 0; margin: 0; border-top: 1px solid #eaeaea; }
+.lista-lateral li { border-bottom: 1px solid #eaeaea; }
+.lista-lateral a { display: block; padding: 12px 5px; color: var(--gris); text-decoration: none; font-size: 12px; font-weight: 500; transition: all 0.3s ease; }
+.lista-lateral a:hover, .lista-lateral a.activo { color: var(--azul); font-weight: bold; }
+
+.titulo-plantel { font-size: 32px; color: var(--azul); margin-bottom: 40px; }
+.categoria-plantel { margin-bottom: 50px; }
+.encabezado-categoria { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.encabezado-categoria h3 { font-size: 16px; color: var(--azul); letter-spacing: 1.5px; }
+.linea-categoria { flex: 1; height: 6px; background: var(--azul); }
+
+.grilla-jugadores { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 25px; }
+.tarjeta-jugador { position: relative; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(17, 51, 91, 0.12); transition: transform 0.3s, box-shadow 0.3s; }
+.tarjeta-jugador:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(17, 51, 91, 0.2); }
+.icono-capitan { width: 26px; height: auto; margin-left: 8px; vertical-align: middle; }
+.etiqueta-top { position: absolute; top: 0; left: 0; background: #e0e5eb; color: var(--gris); font-size: 9px; font-weight: bold; padding: 4px 12px; border-radius: 0 0 8px 0; z-index: 2; }
+.foto-jugador { width: 100%; aspect-ratio: 3 / 4; background: #f0f4f8; display: flex; align-items: center; justify-content: center; color: #cbd3dd; font-size: 12px; text-align: center; }
+.foto-jugador img { width: 100%; height: 100%; object-fit: cover; }
+.info-jugador { background: var(--azul); color: white; padding: 15px; display: flex; flex-direction: column; border-top: 3px solid var(--acento); }
+.info-jugador .nombre { font-size: 11px; color: #d1dbe7; text-transform: uppercase; }
+.info-jugador .apellido { font-size: 17px; font-weight: 900; line-height: 1.1; margin-top: 2px; }
+.letra-pos { position: absolute; bottom: 25px; right: 15px; width: 32px; height: 32px; background: white; color: var(--azul); font-size: 18px; font-weight: bold; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+@media (max-width: 900px) {
+  .layout-sidebar { grid-template-columns: 1fr; gap: 20px; }
+  .menu-lateral { position: static; margin-bottom: 20px; }
+  
+  /* 1. Ocultar los encabezados de categorías (Arqueros, Defensores, etc) */
+  .encabezado-categoria { display: none !important; }
+  .categoria-plantel { margin-bottom: 0 !important; }
+
+  /* Lista continua */
+  .grilla-jugadores { 
+    grid-template-columns: 1fr !important; 
+    gap: 0 !important;
+    border-top: 2px solid var(--azul) !important; 
+  }
+
+  /* Tarjeta general ocupando todo el ancho */
+  .tarjeta-jugador {
+    display: block !important;
+    position: relative !important;
+    height: 170px !important; 
+    background: #ffffff !important;
+    border-radius: 0 !important; 
+    box-shadow: none !important; 
+    border-bottom: 2px solid var(--azul) !important;
+    overflow: hidden !important; 
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-tap-highlight-color: transparent; /* Quita el parpadeo gris nativo de Android/iOS */
+  }
+
+  /* 2. NÚMERO DE DORSAL (Arriba a la izquierda) */
+  .letra-pos {
+    position: absolute !important;
+    top: 10px !important;
+    left: 20px !important;
+    bottom: auto !important; /* IMPORTANTE: Resetea el valor de la PC */
+    right: auto !important;  /* IMPORTANTE: Resetea el valor de la PC */
+    background: transparent !important;
+    color: var(--azul) !important;
+    font-size: 65px !important; 
+    font-weight: 300 !important; 
+    box-shadow: none !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: 1 !important;
+    z-index: 5 !important;
+    border: none !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* Contenedor Nombre y Apellido */
+  .info-jugador {
+    position: absolute !important;
+    bottom: 30px !important; /* Espacio para que la etiqueta entre abajo */
+    left: 20px !important;
+    background: transparent !important; 
+    border: none !important;
+    padding: 0 !important;
+    width: 60% !important; 
+    z-index: 5 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  
+  /* Nombre: Chiquito */
+  .info-jugador .nombre {
+    color: var(--azul) !important;
+    font-size: 14px !important;
+    text-transform: none !important; 
+    margin-bottom: -2px !important; 
+  }
+
+  /* Apellido: Grande */
+  .info-jugador .apellido {
+    color: var(--azul) !important;
+    font-size: 28px !important; 
+    line-height: 1 !important;
+  }
+
+  /* 3. POSICIÓN (Debajo del apellido) */
+  .etiqueta-top {
+    position: absolute !important;
+    top: auto !important; /* IMPORTANTE: Resetea el valor de la PC */
+    bottom: 12px !important; /* Pegado abajo */
+    left: 20px !important; 
+    background: transparent !important;
+    color: var(--azul) !important;
+    font-size: 13px !important;
+    padding: 0 !important;
+    font-weight: 400 !important;
+    z-index: 5 !important;
+    border-radius: 0 !important;
+  }
+
+  /* 4. FOTOS MÁS ABAJO, A LA DERECHA Y SIN CORTAR CARAS */
+  .foto-jugador {
+    position: absolute !important;
+    bottom: 0 !important; 
+    right: 0 !important; 
+    width: 60% !important; 
+    height: 100% !important; 
+    background: transparent !important; 
+    z-index: 2 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .foto-jugador img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; 
+    object-position: top center !important; 
+  }
+
+  /* 5. CLICK EN TODA LA TARJETA (Truco para HTML antiguo) */
+  /* Expande el enlace pequeño de la foto sobre TODA la tarjeta */
+  .enlace-foto-plantel::after {
+    content: '';
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    z-index: 10 !important;
+  }
+
+  /* 6. EFECTO DE ILUMINACIÓN AZUL AL TOCAR (Estilo Chelsea) */
+  .tarjeta-jugador:active {
+    background-color: #0022ff !important; /* Azul eléctrico similar al de la imagen */
+  }
+  
+  /* Cambia todos los textos a blanco al presionar */
+  .tarjeta-jugador:active .info-jugador .nombre,
+  .tarjeta-jugador:active .info-jugador .apellido,
+  .tarjeta-jugador:active .letra-pos,
+  .tarjeta-jugador:active .etiqueta-top {
+    color: #ffffff !important;
+  }
+}
+
+/* 12. PÁGINA: NOTICIAS */
+.pagina-noticias { padding-top: 40px; padding-bottom: 70px; }
+.grilla-noticias-ampliada { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+.tarjeta-noticia-ampliada { display: block; text-decoration: none; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(17, 51, 91, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.tarjeta-noticia-ampliada:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(17, 51, 91, 0.15); }
+.imagen-noticia { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #f0f4f8; }
+.placeholder-foto { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #cbd3dd; font-weight: bold; }
+.imagen-noticia img { width: 100%; height: 100%; object-fit: cover; }
+.recuadro-fecha { position: absolute; top: 15px; left: 15px; background: white; border: 1.5px solid var(--azul); padding: 6px 12px; display: flex; flex-direction: column; align-items: center; line-height: 1.1; box-shadow: 2px 2px 0 rgba(17, 51, 91, 0.1); z-index: 2; }
+.recuadro-fecha .dia { font-size: 18px; font-weight: 900; color: var(--azul); }
+.recuadro-fecha .mes { font-size: 11px; font-weight: bold; text-transform: uppercase; color: var(--azul); }
+.texto-noticia { padding: 25px; }
+.texto-noticia h3 { font-size: 20px; color: var(--azul); text-transform: uppercase; margin-bottom: 12px; line-height: 1.2; }
+.texto-noticia p { font-size: 14px; color: var(--gris); margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+@media (max-width: 850px) { .grilla-noticias-ampliada { grid-template-columns: 1fr; gap: 30px; } }
+
+/* 13. PÁGINA: PARTIDO */
+.pagina-partido { padding-top: 40px; padding-bottom: 70px; }
+.tarjeta-formacion { background: #f8f9fa; border-radius: 12px; border: 2px solid var(--azul); box-shadow: 0 12px 35px rgba(17, 51, 91, 0.18); overflow: hidden; max-width: 800px; margin: 0 auto; }
+.duelo-encabezado { display: flex; justify-content: center; align-items: center; gap: 60px; padding: 30px 20px; background: var(--azul); color: white; border-bottom: 6px solid var(--acento); }
+.equipo-duelo { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.equipo-duelo img { width: 90px; height: 90px; object-fit: contain; }
+.equipo-duelo span { font-weight: 900; font-size: 16px; letter-spacing: 1px; }
+.vs-duelo { font-size: 28px; font-weight: 900; color: var(--acento); font-style: italic; }
+/* Nuevo diseño para que la cancha llene todo el ancho */
+.grafico-cancha { 
+  background: var(--azul); /* Opcional: fondo oscuro detrás de la cancha */
+  display: block; 
+  padding: 0; /* Eliminamos el borde gris alrededor de la cancha */
+  width: 100%;
+}
+.grafico-cancha img { 
+  width: 100%; /* Obliga a la imagen a tocar los bordes laterales */
+  height: auto; 
+  display: block;
+  border-radius: 0 0 12px 12px; /* Redondea solo las esquinas inferiores para coincidir con la tarjeta */
+  object-fit: cover;
+}
+.titulares-contenedor { padding: 40px; }
+.titulo-titulares { color: var(--azul); text-align: center; margin-bottom: 30px; font-size: 22px; text-transform: uppercase; letter-spacing: 1.5px; }
+.lista-titulares { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 50px; row-gap: 20px; }
+.titular-item { display: flex; align-items: center; gap: 15px; padding-bottom: 12px; border-bottom: 1px solid #eaeaea; }
+.dorsal { background: white; color: var(--azul); width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 900; font-size: 16px; border: 2px solid var(--acento); box-shadow: 2px 2px 0 rgba(17, 51, 91, 0.1); }
+.nombre-titular { font-size: 16px; color: var(--gris); }
+.nombre-titular strong { color: var(--azul); font-weight: 900; }
+
+.layout-partido { display: grid; grid-template-columns: 260px 1fr; gap: 30px; align-items: start; }
+.tarjeta-alineacion-lateral { background: #fafafa; border-radius: 12px; border: 2px solid var(--azul); border-top: 6px solid var(--acento); box-shadow: 0 12px 35px rgba(17, 51, 91, 0.18); padding: 25px 20px; position: sticky; top: 100px; }
+.titulo-lateral { color: var(--azul); text-align: center; margin-bottom: 20px; font-size: 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+.lista-vertical-jugadores { list-style: none !important; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.lista-vertical-jugadores li { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--gris); }
+.lista-vertical-jugadores li strong { color: var(--azul); font-weight: 900; }
+.dorsal-pequeno { width: 28px; height: 28px; border: 2px solid var(--acento); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: var(--azul); background: white; font-size: 11px; flex-shrink: 0; box-shadow: 2px 2px 0 rgba(17, 51, 91, 0.1); }
+.separador-lateral { border: none; border-top: 1px dashed #cbd3dd; margin: 25px 0; }
+.tarjeta-formacion-derecha { background: #f8f9fa; border-radius: 12px; border: 2px solid var(--azul); box-shadow: 0 12px 35px rgba(17, 51, 91, 0.18); overflow: hidden; }
+
+@media (max-width: 900px) {
+  .lista-titulares { grid-template-columns: 1fr; column-gap: 0; }
+  .duelo-encabezado { gap: 30px; }
+  .equipo-duelo img { width: 65px; height: 65px; }
+  .vs-duelo { font-size: 22px; }
+  .titulares-contenedor { padding: 30px 20px; }
+  
+  /* 1. Invertir el orden: Gráfico arriba, listas abajo */
+  .layout-partido { 
+    grid-template-columns: 1fr; 
+    display: flex; 
+    flex-direction: column; 
+  }
+  .tarjeta-formacion-derecha { 
+    order: 1; /* Esto sube el gráfico */
+    margin-bottom: 30px; /* Separa el gráfico de la lista de abajo */
+  }
+  .columna-alineacion { 
+    order: 2; /* Esto baja la tarjeta blanca con los nombres */
+  }
+  .tarjeta-alineacion-lateral { position: static; }
+
+/* 2. Distribuir titulares y suplentes en dos columnas centradas y equilibradas */
+  .lista-vertical-jugadores {
+    display: grid !important;
+    /* Divide el ancho disponible exactamente por la mitad para cada columna */
+    grid-template-columns: 1fr 1fr; 
+    /* Elimina el centrado global forzado, dejando que la grilla ocupe el ancho */
+    justify-content: stretch; 
+    column-gap: 20px; /* Un espacio más moderado entre columnas */
+    row-gap: 15px;
+    padding: 0 10px; /* Pequeño margen interno para que no toque los bordes blancos */
+  }
+}
+
+/* 14. PÁGINA: HISTORIA */
+.pagina-historia { 
+  padding-top: 40px; 
+  padding-bottom: 70px; 
+  max-width: 800px; /* Ancho óptimo para que la lectura no canse la vista */
+  margin: 0 auto; 
+}
+
+/* Títulos con el estilo limpio y oscuro */
+.titulo-historia { 
+  font-size: 38px; 
+  color: var(--azul); 
+  font-weight: 900;
+  margin-bottom: 30px; 
+  letter-spacing: -0.5px;
+}
+
+.subtitulo-historia {
+  font-size: 24px;
+  color: var(--azul);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Texto fluyendo libremente por la página */
+.contenido-texto-libre { 
+  font-size: 17px; 
+  color: var(--gris); 
+  line-height: 1.8; 
+}
+
+.contenido-texto-libre p { 
+  margin-bottom: 25px; 
+}
+
+/* Cita destacada sin caja exterior, solo borde lateral */
+.cita-historia { 
+  margin: 40px 0; 
+  padding: 20px 30px; 
+  background: #f8f9fa; 
+  border-left: 6px solid var(--azul); 
+  font-size: 20px; 
+  font-style: italic; 
+  color: var(--azul); 
+  font-weight: bold; 
+}
+
+/* Estilos para las imágenes integradas en el texto */
+.imagen-historia {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Bordes levemente redondeados para que quede moderno */
+  margin: 35px 0; /* Espaciado generoso arriba y abajo de la foto */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+/* Adaptación a celulares */
+@media (max-width: 768px) {
+  .pagina-historia {
+    padding-top: 30px;
+  }
+  .titulo-historia { 
+    font-size: 32px; 
+  }
+  .subtitulo-historia {
+    font-size: 20px;
+  }
+  .contenido-texto-libre {
+    font-size: 16px;
+  }
+  .cita-historia { 
+    padding: 15px 20px; 
+    font-size: 18px; 
+  }
+  .imagen-historia {
+    margin: 25px 0;
+  }
+}
+
+/* 15. PÁGINA: ESTADÍSTICAS */
+.pagina-estadisticas { padding-top: 40px; padding-bottom: 70px; }
+.grilla-estadisticas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+.tarjeta-estadistica { border-top: 2px solid var(--azul); padding: 0; }
+.cabecera-estadistica { background: var(--azul); color: white; padding: 15px; text-align: center; border-bottom: 4px solid var(--acento); }
+.cabecera-estadistica h3 { margin: 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+.cabecera-estadistica.amarillas { border-bottom-color: #FFC107; }
+.cabecera-estadistica.rojas { border-bottom-color: #F44336; }
+.tabla-estadisticas { width: 100%; border-collapse: collapse; min-width: 600px; }
+.tabla-estadisticas th { padding: 12px 15px; font-size: 12px; color: var(--gris); text-transform: uppercase; background: #fbfcfd; border-bottom: 1px solid #eaeaea; font-weight: bold; }
+.tabla-estadisticas td { padding: 12px 15px; font-size: 14px; color: var(--texto); border-bottom: 1px solid #f5f5f5; text-align: center; vertical-align: middle; }
+.tabla-estadisticas tr:last-child td { border-bottom: none; }
+th.col-jugador-stat, td.col-jugador-stat { text-align: left !important; }
+td.col-jugador-stat { display: flex; align-items: center; gap: 12px; }
+td.col-jugador-stat strong { color: var(--azul); font-weight: 900; }
+.foto-stat { width: 36px; height: 36px; border-radius: 50%; background: #e0e5eb; color: #cbd3dd; display: flex; align-items: center; justify-content: center; font-size: 10px; overflow: hidden; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.foto-stat img { width: 100%; height: 100%; object-fit: cover; object-position: top; /* Agrega esta línea */}
+.col-dato { font-weight: 900; color: var(--azul); font-size: 18px; }
+.stat-full { grid-column: 1 / -1; }
+.contador-partido { display: flex; justify-content: center; gap: 8px; margin: 15px 0 0 0; }
+.bloque-tiempo { background: var(--acento); border: none; border-radius: 6px; padding: 8px 10px; min-width: 50px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.25); }
+.bloque-tiempo span { display: block; font-size: 18px; font-weight: 900; color: var(--azul); line-height: 1; }
+.bloque-tiempo small { display: block; font-size: 9px; font-weight: bold; text-transform: uppercase; color: var(--azul); margin-top: 4px; letter-spacing: 0.5px; }
+.filtros-estadisticas { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+.btn-filtro { padding: 10px 20px; background-color: #ffffff; border: 1px solid #d4d4d4; border-radius: 8px; cursor: pointer; font-weight: bold; color: #0b2347; transition: all 0.2s ease; }
+.btn-filtro:hover { background-color: #f0f0f0; }
+.btn-filtro.activo { background-color: #0b2347; color: white; border-color: #0b2347; }
+.col-pos { font-weight: 800; color: #0b2347; text-align: center; width: 50px; }
+.col-stat.oculta { display: none; }
+.col-stat.activa { display: table-cell; font-weight: bold; text-align: center; font-size: 16px; color: #0b2347; }
+#tabla-stats th, #tabla-stats td { padding: 12px 15px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+.enlace-perfil { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+.enlace-perfil:hover { opacity: 0.8; }
+
+/* Inicial oculta en PC, nombre completo visible */
+.nombre-movil { display: none; }
+/* Ocultar el dropdown móvil en pantallas grandes */
+.dropdown-movil-container { display: none; }
+
+@media (max-width: 768px) {
+  .grilla-estadisticas { grid-template-columns: 1fr; }
+  .stat-full { grid-column: 1; }
+  
+/* 1. Ocultar la columna de Posición */
+  .col-pos { display: none !important; }
+
+  /* 2. Filas y fotos más grandes */
+  #tabla-stats td {
+    padding: 22px 15px !important; /* Aumenta el espacio arriba y abajo */
+    font-size: 16px !important;
+  }
+  .foto-stat {
+    width: 48px !important; /* Foto más grande */
+    height: 48px !important;
+  }
+
+/* 3. Acercar la estadística y su título al nombre del jugador */
+  th.col-jugador-stat, td.col-jugador-stat {
+    width: auto !important; /* La columna se ajusta al tamaño exacto del nombre */
+    padding-right: 10px !important; /* Separación mínima con la estadística */
+  }
+
+  th.col-stat.activa, td.col-stat.activa {
+    width: 100% !important; /* Esta columna absorbe todo el espacio sobrante a la derecha */
+    text-align: left !important; /* Pega "GOLES" y el número a la izquierda, cerca del jugador */
+    padding-left: 0 !important;
+    white-space: nowrap !important; /* Evita que el texto se rompa en dos renglones */
+    font-size: 18px !important;
+  }
+  /* 4. Nombres responsivos (Oculta el nombre completo, muestra la inicial) */
+  .nombre-pc { display: none !important; }
+  .nombre-movil { display: inline !important; }
+  
+  /* Ocultar los botones de PC en celulares */
+  .filtros-pc { display: none !important; }
+  
+  /* Contenedor principal del dropdown */
+  .dropdown-movil-container { 
+    display: block; 
+    position: relative; 
+    margin: 0 15px 25px 15px; 
+  }
+
+  /* El botón que muestra la opción actual y la flecha */
+  .btn-dropdown-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--azul);
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--azul);
+    cursor: pointer;
+  }
+
+  /* El menú azul oscuro que se despliega */
+  .dropdown-menu-stats {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #000066; /* Azul oscuro estilo Chelsea */
+    z-index: 20;
+    flex-direction: column;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+
+  /* Clase para cuando el menú está abierto */
+  .dropdown-menu-stats.abierto {
+    display: flex;
+  }
+
+  /* Los botones individuales dentro del menú */
+  .dropdown-item {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+  /* Anula el ancho de 600px de la PC para evitar el scroll horizontal */
+  .tabla-estadisticas {
+    min-width: 100% !important;
+  }
+}
+
+/* 16. PÁGINA: PERFIL DE JUGADORES */
+.pagina-perfil { padding-top: 50px; padding-bottom: 80px; }
+.perfil-layout { display: flex; flex-direction: row; gap: 50px; align-items: flex-start; padding: 35px; }
+.perfil-foto-col { flex: 0 0 35%; position: relative; }
+.perfil-titulo-izq { font-size: 30px; color: var(--azul); margin-top: 0; margin-bottom: 20px; text-align: center; border-bottom: 3px solid var(--acento); padding-bottom: 12px; }
+.contenedor-imagen-dorsal { position: relative; }
+.perfil-foto-col img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.15); object-fit: cover; display: block; }
+.perfil-dorsal { position: absolute; bottom: -15px; right: -15px; background-color: var(--azul); color: #fff; font-size: 26px; font-weight: 900; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.perfil-info-col { flex: 1; }
+.tabla-perfil { display: flex; flex-direction: column; border: 1px solid #e0e5eb; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.fila-perfil .etiqueta { flex: 0 0 170px; background: transparent; padding: 0; font-weight: 900; color: var(--azul); text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; }
+.fila-perfil .valor { flex: 1; color: var(--texto); font-size: 15px; }
+.valor.bio-texto { line-height: 1.6; }
+.enlace-ig { color: #c13434; text-decoration: none; font-weight: bold; }
+.enlace-ig:hover { text-decoration: underline; }
+.fila-stats { align-items: flex-start; }
+.contenedor-stats-unificadas { display: flex; gap: 35px; flex-wrap: wrap; }
+.stat-caja { background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; box-shadow: none; }
+.stat-caja span { font-size: 11px; color: var(--gris); font-weight: bold; margin-bottom: 2px; letter-spacing: 1px; }
+.stat-caja strong { font-size: 20px; color: var(--azul); }
+
+/* Adaptación para celulares: Perfil de Jugadores */
+@media (max-width: 850px) {
+  .perfil-layout {
+    flex-direction: column; /* Apila la foto arriba y la tabla abajo */
+    padding: 20px; /* Achica los márgenes blancos internos */
+    gap: 30px;
+  }
+  .perfil-foto-col {
+    flex: 100%;
+    width: 80%; /* Achica ligeramente la foto para que no ocupe toda la pantalla */
+    margin: 0 auto; /* Centra la foto perfectamente */
+  }
+  /* Cambia la tabla para que la etiqueta quede arriba y el valor abajo */
+  .fila-perfil {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 4px;
+    padding: 12px 15px;
+  }
+  .fila-perfil .etiqueta {
+    flex: auto; /* Libera el ancho fijo que usamos en computadora */
+    font-size: 11px;
+    color: var(--gris); /* Un tono más sutil para la categoría en móvil */
+  }
+  .contenedor-stats-unificadas {
+    gap: 15px; /* Junta las estadísticas */
+    justify-content: center; /* Centra los números de las stats */
+    width: 100%;
+  }
+}
+
+/* Medalla Oro */
+.tabla-estadisticas tbody tr:nth-child(1) .col-num { color: transparent; position: relative; }
+.tabla-estadisticas tbody tr:nth-child(1) .col-num::after { 
+  content: '🥇'; 
+  color: initial; 
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  font-size: 18px; 
+}
+/* Medalla Plata */
+.tabla-estadisticas tbody tr:nth-child(2) .col-num { color: transparent; position: relative; }
+.tabla-estadisticas tbody tr:nth-child(2) .col-num::after { 
+  content: '🥈'; 
+  color: initial; 
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  font-size: 18px; 
+}
+/* Medalla Bronce */
+.tabla-estadisticas tbody tr:nth-child(3) .col-num { color: transparent; position: relative; }
+.tabla-estadisticas tbody tr:nth-child(3) .col-num::after { 
+  content: '🥉'; 
+  color: initial; 
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  font-size: 18px; 
+}
+/* Emojis dinámicos para las estadísticas */
+td[data-tipo="goles"].activa::after { 
+  content: ' ⚽'; 
+  margin-left: 6px;
+  font-size: 14px;
+}
+td[data-tipo="asistencias"].activa::after { 
+  content: ' 👟';
+  margin-left: 6px;
+  font-size: 14px;
+}
+td[data-tipo="pj"].activa::after { 
+  content: ' ✅'; 
+  margin-left: 6px;
+  font-size: 14px;
+}
+td[data-tipo="ta"].activa::after { 
+  content: ' 🟨'; 
+  margin-left: 6px;
+  font-size: 14px;
+}
+td[data-tipo="tr"].activa::after { 
+  content: ' 🟥'; 
+  margin-left: 6px;
+  font-size: 14px;
+}
+/* =========================================
+   NUEVO HEADER Y MENÚ MÓVIL (Off-Canvas)
+   ========================================= */
+
+/* Ocultar los botones de menú en Computadora */
+.btn-menu-movil, .btn-cerrar-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Diseño exclusivo para Celulares */
+@media (max-width: 850px) {
+  
+  /* 1. Limpiamos la pantalla ocultando textos extra y la barra original */
+  .franja, .lema, .subtitulo { display: none !important; }
+  .navegacion { border: none; background: transparent; }
+  /* 2. Convertimos la cabecera en una barra azul superior */
+  .cabecera {
+    background: var(--azul); /* Fondo azul oscuro */
+    min-height: 70px;
+    padding: 0;
+    position: relative; /* Clave para posicionar elementos a los costados */
+    display: flex;
+    justify-content: center; /* Centra el texto de la marca */
+    align-items: center;
+    width: 100%;
+  }
+  /* 3. Escudo a la izquierda */
+  .marca { color: white; }
+  .marca img {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 45px; /* Tamaño ideal para que no deforme la barra */
+    width: auto;
+  }
+  /* 4. SPORTING DON SATUR centrado y en una línea */
+  .marca h1 {
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .marca h1 br { display: none; } /* Fuerza a que se lea todo en un renglón */
+  /* 5. Botón de 3 barras blancas a la derecha */
+  .btn-menu-movil {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white; /* Barras blancas */
+    font-size: 28px;
+    padding: 5px;
+  }
+  /* 6. Ventana lateral deslizable (El menú emergente) */
+  .enlaces {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Escondido a la derecha por defecto */
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: linear-gradient(160deg, #11335B 0%, #07172c 100%); /* Degradado oscuro elegante */
+    flex-direction: column; /* Apila los links uno abajo del otro */
+    justify-content: flex-start;
+    padding: 70px 0 20px 0;
+    z-index: 9999;
+    transition: right 0.3s ease-in-out; /* Animación de deslizamiento */
+    box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+    margin: 0;
+  }
+  /* Esta clase se activa con JavaScript para que el menú entre a la pantalla */
+  .enlaces.abierto { right: 0; }
+  /* Botón X de cerrado */
+  .btn-cerrar-menu {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 24px;
+  }
+  /* Formato estilo lista para los botones adentro del menú */
+  .enlaces a {
+    justify-content: flex-start; /* Texto a la izquierda */
+    padding: 16px 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Línea sutil divisoria */
+    width: 100%;
+    font-size: 13px;
+  }
+  /* El escudito simplificado no lleva línea abajo */
+  .enlaces a:first-of-type { border-bottom: none; margin-bottom: 10px; }
+}
+/* Banner principal de ancho completo */
+.banner-fullwidth {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.banner-fullwidth img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover; /* Evita que la imagen se deforme al adaptarse a distintas pantallas */
+}
+
+/* 1. Creamos las "instrucciones" del movimiento */
+@keyframes paneo-portada {
+  0% { object-position: 0% center; }   /* Arranca mostrando el borde izquierdo */
+  50% { object-position: 100% center; } /* Viaja hasta mostrar el borde derecho */
+  100% { object-position: 0% center; }  /* Vuelve suavemente a la izquierda */
+}
+/* 2. Se lo aplicamos a la imagen solo en celulares */
+@media (max-width: 850px) {
+  .banner-fullwidth img {
+    height: 280px; 
+    object-fit: cover; 
+    
+    /* Llamamos a la animación: dura 15 segundos, es suave en los bordes e infinita */
+    animation: paneo-portada 15s ease-in-out infinite;
+  }
+}
+
+/* =========================================
+   ESTRUCTURA INTERNA DE LAS PORTADAS
+   ========================================= */
+
+.portada-grid {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 30px;
+  flex-wrap: wrap; 
+  gap: 30px;
+}
+
+.titulo-elegante {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(50px, 7vw, 90px);
+  color: white;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  text-shadow: 2px 4px 15px rgba(0,0,0,0.5);
+  margin: 0;
+}
+
+.portada-escudos { display: flex; align-items: center; gap: 25px; }
+.escudo-local, .escudo-rival { height: 90px; width: auto; object-fit: contain; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+.separador-blanco { color: white; font-size: 35px; font-weight: 100; opacity: 0.6; }
+.portada-info { display: flex; align-items: center; gap: 20px; }
+.logo-torneo { height: 65px; width: auto; }
+.portada-textos { display: flex; flex-direction: column; gap: 8px; color: white; font-family: -apple-system, sans-serif; letter-spacing: 1px; }
+.fila-texto { display: flex; gap: 25px; font-size: 15px; text-shadow: 1px 2px 8px rgba(0,0,0,0.7); }
+.texto-grueso { font-weight: 900; }
+.texto-fino { font-weight: 400; }
+
+/* --- INSTRUCCIONES DE ANIMACIÓN (Clave para que aparezcan) --- */
+@keyframes entrarIzquierda {
+  from { opacity: 0; transform: translateX(-80px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes entrarDerecha {
+  from { opacity: 0; transform: translateX(80px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- ADAPTACIÓN MÓVIL PARA LOS DATOS --- */
+@media (max-width: 850px) {
+  /* 1. Le damos más altura al carrusel para que entre todo el contenido apilado sin cortarse arriba */
+  .carrusel-portada { min-height: 560px; }
+
+  /* 2. Devolvemos los márgenes laterales (25px) para que el texto no toque los bordes */
+  .portada-grid { 
+    flex-direction: column; 
+    justify-content: center; 
+    padding: 30px 25px; 
+    gap: 20px;
+  }
+  
+  /* 3. Achicamos y centramos los textos para la pantalla chica */
+  .titulo-elegante { text-align: center; font-size: 42px; }
+  #js-noticia-subtitulo { text-align: center; font-size: 14px !important; }
+  
+  /* 4. Limitamos la altura de la foto para que no estorbe a las flechas del carrusel */
+  #js-noticia-imagen { max-height: 150px !important; }
+
+  /* Ajustes originales de las otras pantallas */
+  .portada-info { flex-direction: column; }
+  .fila-texto { justify-content: center; gap: 15px; }
+}
+
+/* =========================================
+   CARRUSEL DINÁMICO (Slider)
+   ========================================= */
+
+.carrusel-portada {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  background: var(--azul); /* Fondo de seguridad */
+}
+
+/* Diseño individual de cada pantalla */
+.slide {
+  position: absolute;
+  inset: 0; /* Ocupa el 100% del contenedor */
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+/* El slide que se está mostrando ahora */
+.slide.activo {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Capa oscura para que el texto resalte siempre */
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: 1;
+}
+
+/* Botones de navegación < > */
+.btn-carrusel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 15px 10px;
+  cursor: pointer;
+  z-index: 10; /* Siempre por encima de todo */
+  transition: background 0.3s;
+}
+
+.btn-carrusel:hover { background: rgba(0, 0, 0, 0.8); }
+.btn-carrusel.prev { left: 0; border-radius: 0 5px 5px 0; }
+.btn-carrusel.next { right: 0; border-radius: 5px 0 0 5px; }
+
+
+/* =========================================
+   AJUSTE CLAVE DE LAS ANIMACIONES
+   ========================================= */
+/* Reseteamos la opacidad para que desaparezcan cuando el slide no se ve */
+.portada-izq, .portada-der { opacity: 0; }
+
+/* La animación SOLO arranca cuando el Slide gana la clase .activo */
+.slide.activo .portada-izq {
+  animation: entrarIzquierda 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.slide.activo .portada-der {
+  animation: entrarDerecha 2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s forwards;
+}
